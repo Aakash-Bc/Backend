@@ -4,8 +4,10 @@ import authRoutes from "./routes/authRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import { connectDB } from "./config/db.js";
+import dotenv from "dotenv";
 
 const app = express();
+dotenv.config()
 
 const startServer = async () => {
   try {
