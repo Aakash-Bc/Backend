@@ -31,8 +31,8 @@
 
 import mongoose from "mongoose";
 
-const blogSchema = new mongoose.Schema({
-  title: {
+const categorySchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true
   },
@@ -46,4 +46,4 @@ const blogSchema = new mongoose.Schema({
   }
 });
 
-export const Blog = mongoose.model("Blog", blogSchema);
+export const Category = mongoose.model("Category", categorySchema);
