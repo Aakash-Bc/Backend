@@ -12,8 +12,9 @@ dotenv.config()
 const startServer = async () => {
   try {
     await connectDB();
-    app.listen(5000, () => {
-      console.log("🚀 http://localhost:5000 Server running on port 5000");
+     const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
     });
   } catch (error) {
     console.error("Failed to start server:", error);
@@ -22,7 +23,11 @@ const startServer = async () => {
 
 startServer();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://react-o9t7.vercel.app",
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
