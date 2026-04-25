@@ -24,7 +24,7 @@ const startServer = async () => {
 startServer();
 
 app.use(cors({
-  origin: "https://react-o9t7.vercel.app",
+  origin: ["https://react-o9t7.vercel.app", "http://localhost:5173"],
   credentials: true
 }));
 
