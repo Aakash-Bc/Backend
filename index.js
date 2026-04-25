@@ -24,8 +24,19 @@ const startServer = async () => {
 
 startServer();
 
+const allowedOrigins = [
+  "https://react-o9t7.vercel.app",
+  "http://localhost:5173",
+];
+
 app.use(cors({
-  origin: ["https://react-o9t7.vercel.app", "http://localhost:5173"],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
@@ -37,7 +48,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
-app.use("/api", blogRoutes);
 app.use("/api/categories", categoryRoutes);
 app.get("/api/news", getNews);
 
