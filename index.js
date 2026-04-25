@@ -3,6 +3,7 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
+import { getNews } from "./controller/newsController.js";
 import { connectDB } from "./config/db.js";
 import dotenv from "dotenv";
 
@@ -38,5 +39,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api", blogRoutes);
 app.use("/api/categories", categoryRoutes);
+app.get("/api/news", getNews);
 
 
