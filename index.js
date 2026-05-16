@@ -57,8 +57,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/categories", categoryRoutes);
 app.get("/api/news", getNews);
 
-// Use /api/blogs for all blog related operations
 app.use("/api/blogs", blogRoutes);
+app.use("/api", blogRoutes); // Added back for backward compatibility
+
 
 // --- Server Startup ---
 const startServer = async () => {

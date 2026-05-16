@@ -1,14 +1,17 @@
 import { Blog } from "../model/blog.js"
 
 export const createBlog = async (req, res) => {
+    console.log("📝 Creating Blog with data:", req.body);
     try {
         const createdBlog = await Blog.create(req.body)
         res.json(createdBlog)
     }
     catch (err) {
+        console.error("❌ Blog Creation Failed:", err.message);
         res.status(500).json({ message: err.message });
     }
 }
+
 
 
 export const getAllBlogs = async (req, res) => {
